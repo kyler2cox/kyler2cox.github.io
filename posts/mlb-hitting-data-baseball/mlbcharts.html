@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mlbcharts – Kyler’s Blog on Sports</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-04845a3da8c39e7b831dcae45b259ee5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ea451db48fb63b2922d315720a1d0a33.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-04845a3da8c39e7b831dcae45b259ee5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kyler’s Blog on Sports</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/kyler2cox"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/kyler2cox"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">mlbcharts</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1">
+
+
+
+
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>standard <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/standard_stats.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 907 Columns: 35
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (6): Player, Team, Lg, Pos, Awards, Player-additional
+dbl (29): Rk, Age, WAR, G, PA, AB, R, H, 2B, 3B, HR, RBI, SB, CS, BB, SO, BA...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/exit_velocity.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 246 Columns: 18
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): last_name, first_name
+dbl (17): player_id, attempts, avg_hit_angle, anglesweetspotpercent, max_hit...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bat_tracking <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/bat_tracking.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 209 Columns: 18
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): name
+dbl (17): id, swings_competitive, percent_swings_competitive, contact, avg_b...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(standard)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 907
+Columns: 35
+$ Rk                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…
+$ Player              &lt;chr&gt; "Pete Crow-Armstrong*", "Iván Herrera", "Michael B…
+$ Age                 &lt;dbl&gt; 24, 26, 28, 21, 25, 27, 26, 32, 22, 25, 33, 31, 22…
+$ Team                &lt;chr&gt; "CHC", "STL", "CHC", "DET", "LAA", "SDP", "CHW", "…
+$ Lg                  &lt;chr&gt; "NL", "NL", "NL", "AL", "AL", "NL", "AL", "NL", "A…
+$ WAR                 &lt;dbl&gt; 9.8, 2.9, 1.6, 7.1, 5.2, 4.3, 5.4, 5.8, 5.7, 3.2, …
+$ G                   &lt;dbl&gt; 162, 161, 160, 156, 157, 159, 159, 155, 162, 158, …
+$ PA                  &lt;dbl&gt; 726, 717, 710, 707, 704, 704, 704, 702, 702, 702, …
+$ AB                  &lt;dbl&gt; 626, 605, 600, 605, 619, 626, 588, 608, 616, 623, …
+$ R                   &lt;dbl&gt; 119, 98, 78, 97, 102, 96, 106, 92, 100, 88, 95, 10…
+$ H                   &lt;dbl&gt; 175, 146, 145, 168, 148, 181, 147, 161, 170, 141, …
+$ `2B`                &lt;dbl&gt; 31, 26, 27, 28, 31, 32, 31, 33, 25, 27, 20, 24, 25…
+$ `3B`                &lt;dbl&gt; 8, 1, 2, 5, 5, 3, 1, 2, 1, 6, 1, 0, 0, 1, 3, 0, 2,…
+$ HR                  &lt;dbl&gt; 45, 19, 20, 18, 27, 25, 33, 28, 42, 24, 45, 43, 32…
+$ RBI                 &lt;dbl&gt; 107, 69, 77, 72, 77, 83, 93, 93, 101, 60, 97, 113,…
+$ SB                  &lt;dbl&gt; 41, 8, 3, 12, 24, 38, 22, 3, 3, 10, 3, 5, 15, 21, …
+$ CS                  &lt;dbl&gt; 7, 0, 2, 4, 12, 13, 2, 1, 3, 5, 1, 1, 8, 4, 0, 0, …
+$ BB                  &lt;dbl&gt; 83, 76, 92, 95, 70, 64, 101, 76, 79, 67, 105, 81, …
+$ SO                  &lt;dbl&gt; 187, 138, 165, 100, 215, 130, 126, 102, 129, 156, …
+$ BA                  &lt;dbl&gt; 0.280, 0.241, 0.242, 0.278, 0.239, 0.289, 0.250, 0…
+$ OBP                 &lt;dbl&gt; 0.372, 0.353, 0.352, 0.376, 0.330, 0.358, 0.363, 0…
+$ SLG                 &lt;dbl&gt; 0.570, 0.382, 0.393, 0.430, 0.436, 0.470, 0.474, 0…
+$ OPS                 &lt;dbl&gt; 0.943, 0.735, 0.745, 0.806, 0.766, 0.828, 0.837, 0…
+$ `OPS+`              &lt;dbl&gt; 156, 111, 106, 126, 118, 130, 134, 124, 144, 102, …
+$ rOBA                &lt;dbl&gt; 0.407, 0.342, 0.335, 0.364, 0.337, 0.368, 0.372, 0…
+$ `Rbat+`             &lt;dbl&gt; 153, 119, 108, 129, 118, 132, 133, 127, 140, 102, …
+$ TB                  &lt;dbl&gt; 357, 231, 236, 260, 270, 294, 279, 282, 323, 252, …
+$ GIDP                &lt;dbl&gt; 2, 19, 11, 5, 3, 15, 12, 19, 26, 9, 3, 13, 16, 11,…
+$ HBP                 &lt;dbl&gt; 12, 31, 13, 3, 14, 7, 7, 12, 4, 10, 8, 12, 4, 4, 1…
+$ SH                  &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ SF                  &lt;dbl&gt; 4, 5, 5, 4, 1, 6, 7, 6, 3, 2, 6, 5, 10, 3, 3, 6, 7…
+$ IBB                 &lt;dbl&gt; 7, 5, 3, 1, 1, 6, 5, 2, 14, 3, 6, 6, 5, 1, 3, 5, 0…
+$ Pos                 &lt;chr&gt; "*8/DH", "D2/3H", "*3/H", "65/D", "*6/DH", "*94/DH…
+$ Awards              &lt;chr&gt; "AS", "AS", NA, "AS", NA, NA, "AS", NA, "AS", NA, …
+$ `Player-additional` &lt;chr&gt; "crowape01", "herreiv01", "buschmi02", "mcgonke01"…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(savant)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 246
+Columns: 18
+$ `last_name, first_name` &lt;chr&gt; "Arraez, Luis", "Hoerner, Nico", "Lopez, Otto"…
+$ player_id               &lt;dbl&gt; 650333, 663538, 672640, 676391, 802415, 645277…
+$ attempts                &lt;dbl&gt; 588, 578, 549, 539, 538, 524, 522, 520, 518, 5…
+$ avg_hit_angle           &lt;dbl&gt; 16.2, 12.0, 8.4, 17.4, 1.2, 17.8, 6.0, 10.8, 7…
+$ anglesweetspotpercent   &lt;dbl&gt; 39.1, 36.7, 30.4, 31.5, 25.3, 32.3, 29.7, 35.4…
+$ max_hit_speed           &lt;dbl&gt; 104.4, 108.9, 112.8, 109.7, 106.8, 108.7, 113.…
+$ avg_hit_speed           &lt;dbl&gt; 86.4, 85.9, 89.1, 84.2, 83.7, 87.1, 90.9, 87.0…
+$ ev50                    &lt;dbl&gt; 94.1, 96.1, 100.3, 94.0, 92.6, 96.6, 102.5, 98…
+$ fbld                    &lt;dbl&gt; 88.5, 89.0, 92.4, 88.4, 84.3, 90.8, 93.9, 90.3…
+$ gb                      &lt;dbl&gt; 84.1, 85.0, 87.0, 81.3, 84.1, 84.0, 90.3, 86.3…
+$ max_distance            &lt;dbl&gt; 399, 402, 427, 399, 355, 416, 439, 434, 427, 4…
+$ avg_distance            &lt;dbl&gt; 172, 155, 147, 165, 108, 181, 146, 148, 160, 1…
+$ avg_hr_distance         &lt;dbl&gt; 372, 383, 398, 376, NA, 388, 388, 392, 392, 39…
+$ ev95plus                &lt;dbl&gt; 114, 168, 224, 112, 73, 145, 250, 185, 216, 19…
+$ ev95percent             &lt;dbl&gt; 19.4, 29.1, 40.8, 20.8, 13.6, 27.7, 48.1, 35.6…
+$ barrels                 &lt;dbl&gt; 7, 8, 33, 11, 0, 20, 37, 23, 33, 33, 37, 20, 6…
+$ brl_percent             &lt;dbl&gt; 1.2, 1.4, 6.0, 2.0, 0.0, 3.8, 7.1, 4.4, 6.4, 6…
+$ brl_pa                  &lt;dbl&gt; 1.1, 1.2, 4.8, 1.8, 0.0, 2.9, 5.4, 3.5, 4.7, 4…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bat_tracking)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 209
+Columns: 18
+$ id                          &lt;dbl&gt; 691406, 691023, 701762, 701358, 665833, 66…
+$ name                        &lt;chr&gt; "Caminero, Junior", "Walker, Jordan", "Kur…
+$ swings_competitive          &lt;dbl&gt; 1064, 1100, 668, 1021, 655, 827, 1221, 117…
+$ percent_swings_competitive  &lt;dbl&gt; 0.9117395, 0.9075908, 0.9076087, 0.9027409…
+$ contact                     &lt;dbl&gt; 829, 785, 433, 732, 421, 551, 915, 835, 71…
+$ avg_bat_speed               &lt;dbl&gt; 79.44846, 79.26216, 78.19179, 77.93244, 77…
+$ hard_swing_rate             &lt;dbl&gt; 0.8486842, 0.8545455, 0.8038922, 0.7796278…
+$ squared_up_per_bat_contact  &lt;dbl&gt; 0.2943305, 0.2777070, 0.2609700, 0.2349727…
+$ squared_up_per_swing        &lt;dbl&gt; 0.2293233, 0.1981818, 0.1691617, 0.1684623…
+$ blast_per_bat_contact       &lt;dbl&gt; 0.2376357, 0.2165605, 0.2147806, 0.1598361…
+$ blast_per_swing             &lt;dbl&gt; 0.18515038, 0.15454545, 0.13922156, 0.1145…
+$ swing_length                &lt;dbl&gt; 8.710483, 8.336535, 7.759191, 7.692896, 7.…
+$ swords                      &lt;dbl&gt; 17, 28, 17, 13, 11, 24, 30, 52, 20, 24, 45…
+$ batter_run_value            &lt;dbl&gt; 6.335751, 1.838342, -6.144006, -29.409714,…
+$ whiffs                      &lt;dbl&gt; 235, 315, 235, 289, 234, 276, 306, 338, 25…
+$ whiff_per_swing             &lt;dbl&gt; 0.2208647, 0.2863636, 0.3517964, 0.2830558…
+$ batted_ball_events          &lt;dbl&gt; 448, 411, 183, 343, 205, 278, 422, 345, 35…
+$ batted_ball_event_per_swing &lt;dbl&gt; 0.4210526, 0.3736364, 0.2739521, 0.3359452…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(standard<span class="sc">$</span>Player)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Pete Crow-Armstrong*" "Iván Herrera"         "Michael Busch*"      
+[4] "Kevin McGonigle*"     "Zach Neto"            "Fernando Tatis Jr."  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(savant)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 18
+  `last_name, first_name` player_id attempts avg_hit_angle anglesweetspotpercent
+  &lt;chr&gt;                       &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;                 &lt;dbl&gt;
+1 Arraez, Luis               650333      588          16.2                  39.1
+2 Hoerner, Nico              663538      578          12                    36.7
+3 Lopez, Otto                672640      549           8.4                  30.4
+4 Clement, Ernie             676391      539          17.4                  31.5
+5 Simpson, Chandler          802415      538           1.2                  25.3
+6 Albies, Ozzie              645277      524          17.8                  32.3
+# ℹ 13 more variables: max_hit_speed &lt;dbl&gt;, avg_hit_speed &lt;dbl&gt;, ev50 &lt;dbl&gt;,
+#   fbld &lt;dbl&gt;, gb &lt;dbl&gt;, max_distance &lt;dbl&gt;, avg_distance &lt;dbl&gt;,
+#   avg_hr_distance &lt;dbl&gt;, ev95plus &lt;dbl&gt;, ev95percent &lt;dbl&gt;, barrels &lt;dbl&gt;,
+#   brl_percent &lt;dbl&gt;, brl_pa &lt;dbl&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bat_tracking<span class="sc">$</span>name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Caminero, Junior"  "Walker, Jordan"    "Kurtz, Nick"      
+[4] "Smith, Cam"        "Cruz, Oneil"       "Mitchell, Garrett"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(standard)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 907
+Columns: 35
+$ Rk                  &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…
+$ Player              &lt;chr&gt; "Pete Crow-Armstrong*", "Iván Herrera", "Michael B…
+$ Age                 &lt;dbl&gt; 24, 26, 28, 21, 25, 27, 26, 32, 22, 25, 33, 31, 22…
+$ Team                &lt;chr&gt; "CHC", "STL", "CHC", "DET", "LAA", "SDP", "CHW", "…
+$ Lg                  &lt;chr&gt; "NL", "NL", "NL", "AL", "AL", "NL", "AL", "NL", "A…
+$ WAR                 &lt;dbl&gt; 9.8, 2.9, 1.6, 7.1, 5.2, 4.3, 5.4, 5.8, 5.7, 3.2, …
+$ G                   &lt;dbl&gt; 162, 161, 160, 156, 157, 159, 159, 155, 162, 158, …
+$ PA                  &lt;dbl&gt; 726, 717, 710, 707, 704, 704, 704, 702, 702, 702, …
+$ AB                  &lt;dbl&gt; 626, 605, 600, 605, 619, 626, 588, 608, 616, 623, …
+$ R                   &lt;dbl&gt; 119, 98, 78, 97, 102, 96, 106, 92, 100, 88, 95, 10…
+$ H                   &lt;dbl&gt; 175, 146, 145, 168, 148, 181, 147, 161, 170, 141, …
+$ `2B`                &lt;dbl&gt; 31, 26, 27, 28, 31, 32, 31, 33, 25, 27, 20, 24, 25…
+$ `3B`                &lt;dbl&gt; 8, 1, 2, 5, 5, 3, 1, 2, 1, 6, 1, 0, 0, 1, 3, 0, 2,…
+$ HR                  &lt;dbl&gt; 45, 19, 20, 18, 27, 25, 33, 28, 42, 24, 45, 43, 32…
+$ RBI                 &lt;dbl&gt; 107, 69, 77, 72, 77, 83, 93, 93, 101, 60, 97, 113,…
+$ SB                  &lt;dbl&gt; 41, 8, 3, 12, 24, 38, 22, 3, 3, 10, 3, 5, 15, 21, …
+$ CS                  &lt;dbl&gt; 7, 0, 2, 4, 12, 13, 2, 1, 3, 5, 1, 1, 8, 4, 0, 0, …
+$ BB                  &lt;dbl&gt; 83, 76, 92, 95, 70, 64, 101, 76, 79, 67, 105, 81, …
+$ SO                  &lt;dbl&gt; 187, 138, 165, 100, 215, 130, 126, 102, 129, 156, …
+$ BA                  &lt;dbl&gt; 0.280, 0.241, 0.242, 0.278, 0.239, 0.289, 0.250, 0…
+$ OBP                 &lt;dbl&gt; 0.372, 0.353, 0.352, 0.376, 0.330, 0.358, 0.363, 0…
+$ SLG                 &lt;dbl&gt; 0.570, 0.382, 0.393, 0.430, 0.436, 0.470, 0.474, 0…
+$ OPS                 &lt;dbl&gt; 0.943, 0.735, 0.745, 0.806, 0.766, 0.828, 0.837, 0…
+$ `OPS+`              &lt;dbl&gt; 156, 111, 106, 126, 118, 130, 134, 124, 144, 102, …
+$ rOBA                &lt;dbl&gt; 0.407, 0.342, 0.335, 0.364, 0.337, 0.368, 0.372, 0…
+$ `Rbat+`             &lt;dbl&gt; 153, 119, 108, 129, 118, 132, 133, 127, 140, 102, …
+$ TB                  &lt;dbl&gt; 357, 231, 236, 260, 270, 294, 279, 282, 323, 252, …
+$ GIDP                &lt;dbl&gt; 2, 19, 11, 5, 3, 15, 12, 19, 26, 9, 3, 13, 16, 11,…
+$ HBP                 &lt;dbl&gt; 12, 31, 13, 3, 14, 7, 7, 12, 4, 10, 8, 12, 4, 4, 1…
+$ SH                  &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ SF                  &lt;dbl&gt; 4, 5, 5, 4, 1, 6, 7, 6, 3, 2, 6, 5, 10, 3, 3, 6, 7…
+$ IBB                 &lt;dbl&gt; 7, 5, 3, 1, 1, 6, 5, 2, 14, 3, 6, 6, 5, 1, 3, 5, 0…
+$ Pos                 &lt;chr&gt; "*8/DH", "D2/3H", "*3/H", "65/D", "*6/DH", "*94/DH…
+$ Awards              &lt;chr&gt; "AS", "AS", NA, "AS", NA, NA, "AS", NA, "AS", NA, …
+$ `Player-additional` &lt;chr&gt; "crowape01", "herreiv01", "buschmi02", "mcgonke01"…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(savant)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 246
+Columns: 18
+$ `last_name, first_name` &lt;chr&gt; "Arraez, Luis", "Hoerner, Nico", "Lopez, Otto"…
+$ player_id               &lt;dbl&gt; 650333, 663538, 672640, 676391, 802415, 645277…
+$ attempts                &lt;dbl&gt; 588, 578, 549, 539, 538, 524, 522, 520, 518, 5…
+$ avg_hit_angle           &lt;dbl&gt; 16.2, 12.0, 8.4, 17.4, 1.2, 17.8, 6.0, 10.8, 7…
+$ anglesweetspotpercent   &lt;dbl&gt; 39.1, 36.7, 30.4, 31.5, 25.3, 32.3, 29.7, 35.4…
+$ max_hit_speed           &lt;dbl&gt; 104.4, 108.9, 112.8, 109.7, 106.8, 108.7, 113.…
+$ avg_hit_speed           &lt;dbl&gt; 86.4, 85.9, 89.1, 84.2, 83.7, 87.1, 90.9, 87.0…
+$ ev50                    &lt;dbl&gt; 94.1, 96.1, 100.3, 94.0, 92.6, 96.6, 102.5, 98…
+$ fbld                    &lt;dbl&gt; 88.5, 89.0, 92.4, 88.4, 84.3, 90.8, 93.9, 90.3…
+$ gb                      &lt;dbl&gt; 84.1, 85.0, 87.0, 81.3, 84.1, 84.0, 90.3, 86.3…
+$ max_distance            &lt;dbl&gt; 399, 402, 427, 399, 355, 416, 439, 434, 427, 4…
+$ avg_distance            &lt;dbl&gt; 172, 155, 147, 165, 108, 181, 146, 148, 160, 1…
+$ avg_hr_distance         &lt;dbl&gt; 372, 383, 398, 376, NA, 388, 388, 392, 392, 39…
+$ ev95plus                &lt;dbl&gt; 114, 168, 224, 112, 73, 145, 250, 185, 216, 19…
+$ ev95percent             &lt;dbl&gt; 19.4, 29.1, 40.8, 20.8, 13.6, 27.7, 48.1, 35.6…
+$ barrels                 &lt;dbl&gt; 7, 8, 33, 11, 0, 20, 37, 23, 33, 33, 37, 20, 6…
+$ brl_percent             &lt;dbl&gt; 1.2, 1.4, 6.0, 2.0, 0.0, 3.8, 7.1, 4.4, 6.4, 6…
+$ brl_pa                  &lt;dbl&gt; 1.1, 1.2, 4.8, 1.8, 0.0, 2.9, 5.4, 3.5, 4.7, 4…</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(bat_tracking)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 209
+Columns: 18
+$ id                          &lt;dbl&gt; 691406, 691023, 701762, 701358, 665833, 66…
+$ name                        &lt;chr&gt; "Caminero, Junior", "Walker, Jordan", "Kur…
+$ swings_competitive          &lt;dbl&gt; 1064, 1100, 668, 1021, 655, 827, 1221, 117…
+$ percent_swings_competitive  &lt;dbl&gt; 0.9117395, 0.9075908, 0.9076087, 0.9027409…
+$ contact                     &lt;dbl&gt; 829, 785, 433, 732, 421, 551, 915, 835, 71…
+$ avg_bat_speed               &lt;dbl&gt; 79.44846, 79.26216, 78.19179, 77.93244, 77…
+$ hard_swing_rate             &lt;dbl&gt; 0.8486842, 0.8545455, 0.8038922, 0.7796278…
+$ squared_up_per_bat_contact  &lt;dbl&gt; 0.2943305, 0.2777070, 0.2609700, 0.2349727…
+$ squared_up_per_swing        &lt;dbl&gt; 0.2293233, 0.1981818, 0.1691617, 0.1684623…
+$ blast_per_bat_contact       &lt;dbl&gt; 0.2376357, 0.2165605, 0.2147806, 0.1598361…
+$ blast_per_swing             &lt;dbl&gt; 0.18515038, 0.15454545, 0.13922156, 0.1145…
+$ swing_length                &lt;dbl&gt; 8.710483, 8.336535, 7.759191, 7.692896, 7.…
+$ swords                      &lt;dbl&gt; 17, 28, 17, 13, 11, 24, 30, 52, 20, 24, 45…
+$ batter_run_value            &lt;dbl&gt; 6.335751, 1.838342, -6.144006, -29.409714,…
+$ whiffs                      &lt;dbl&gt; 235, 315, 235, 289, 234, 276, 306, 338, 25…
+$ whiff_per_swing             &lt;dbl&gt; 0.2208647, 0.2863636, 0.3517964, 0.2830558…
+$ batted_ball_events          &lt;dbl&gt; 448, 411, 183, 343, 205, 278, 422, 345, 35…
+$ batted_ball_event_per_swing &lt;dbl&gt; 0.4210526, 0.3736364, 0.2739521, 0.3359452…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hitting <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"player_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hitting)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 209
+Columns: 35
+$ `last_name, first_name`     &lt;chr&gt; "Arraez, Luis", "Hoerner, Nico", "Lopez, O…
+$ player_id                   &lt;dbl&gt; 650333, 663538, 672640, 676391, 802415, 64…
+$ attempts                    &lt;dbl&gt; 588, 578, 549, 539, 538, 524, 522, 520, 51…
+$ avg_hit_angle               &lt;dbl&gt; 16.2, 12.0, 8.4, 17.4, 1.2, 17.8, 6.0, 10.…
+$ anglesweetspotpercent       &lt;dbl&gt; 39.1, 36.7, 30.4, 31.5, 25.3, 32.3, 29.7, …
+$ max_hit_speed               &lt;dbl&gt; 104.4, 108.9, 112.8, 109.7, 106.8, 108.7, …
+$ avg_hit_speed               &lt;dbl&gt; 86.4, 85.9, 89.1, 84.2, 83.7, 87.1, 90.9, …
+$ ev50                        &lt;dbl&gt; 94.1, 96.1, 100.3, 94.0, 92.6, 96.6, 102.5…
+$ fbld                        &lt;dbl&gt; 88.5, 89.0, 92.4, 88.4, 84.3, 90.8, 93.9, …
+$ gb                          &lt;dbl&gt; 84.1, 85.0, 87.0, 81.3, 84.1, 84.0, 90.3, …
+$ max_distance                &lt;dbl&gt; 399, 402, 427, 399, 355, 416, 439, 434, 42…
+$ avg_distance                &lt;dbl&gt; 172, 155, 147, 165, 108, 181, 146, 148, 16…
+$ avg_hr_distance             &lt;dbl&gt; 372, 383, 398, 376, NA, 388, 388, 392, 392…
+$ ev95plus                    &lt;dbl&gt; 114, 168, 224, 112, 73, 145, 250, 185, 216…
+$ ev95percent                 &lt;dbl&gt; 19.4, 29.1, 40.8, 20.8, 13.6, 27.7, 48.1, …
+$ barrels                     &lt;dbl&gt; 7, 8, 33, 11, 0, 20, 37, 23, 33, 33, 37, 2…
+$ brl_percent                 &lt;dbl&gt; 1.2, 1.4, 6.0, 2.0, 0.0, 3.8, 7.1, 4.4, 6.…
+$ brl_pa                      &lt;dbl&gt; 1.1, 1.2, 4.8, 1.8, 0.0, 2.9, 5.4, 3.5, 4.…
+$ name                        &lt;chr&gt; "Arraez, Luis", "Hoerner, Nico", "Lopez, O…
+$ swings_competitive          &lt;dbl&gt; 1027, 1034, 1005, 959, 787, 1242, 1085, 98…
+$ percent_swings_competitive  &lt;dbl&gt; 0.9064431, 0.9038462, 0.9045905, 0.8996248…
+$ contact                     &lt;dbl&gt; 952, 927, 827, 838, 713, 992, 942, 835, 98…
+$ avg_bat_speed               &lt;dbl&gt; 63.11282, 68.32074, 71.87849, 67.30337, 65…
+$ hard_swing_rate             &lt;dbl&gt; 0.0009737098, 0.0145067698, 0.2348258706, …
+$ squared_up_per_bat_contact  &lt;dbl&gt; 0.4590336, 0.3948220, 0.3784764, 0.3926014…
+$ squared_up_per_swing        &lt;dbl&gt; 0.4255112, 0.3539652, 0.3114428, 0.3430657…
+$ blast_per_bat_contact       &lt;dbl&gt; 0.01785714, 0.07443366, 0.18137848, 0.0525…
+$ blast_per_swing             &lt;dbl&gt; 0.01655307, 0.06673114, 0.14925373, 0.0458…
+$ swing_length                &lt;dbl&gt; 5.869335, 7.281296, 6.753118, 7.107732, 6.…
+$ swords                      &lt;dbl&gt; 3, 14, 23, 31, 10, 16, 12, 18, 10, 17, 18,…
+$ batter_run_value            &lt;dbl&gt; -16.2954281, -26.9644497, -3.3107748, -26.…
+$ whiffs                      &lt;dbl&gt; 75, 107, 178, 121, 74, 250, 143, 147, 226,…
+$ whiff_per_swing             &lt;dbl&gt; 0.07302824, 0.10348162, 0.17711443, 0.1261…
+$ batted_ball_events          &lt;dbl&gt; 517, 532, 491, 485, 468, 458, 480, 478, 47…
+$ batted_ball_event_per_swing &lt;dbl&gt; 0.5034080, 0.5145068, 0.4885572, 0.5057351…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Swinging Faster Mean Hitting the Ball Harder?"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>hitting <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_bat_speed)) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, avg_bat_speed, avg_hit_speed) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   name               avg_bat_speed avg_hit_speed
+   &lt;chr&gt;                      &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Caminero, Junior            79.4          92.7
+ 2 Walker, Jordan              79.3          92.6
+ 3 Kurtz, Nick                 78.2          93.4
+ 4 Smith, Cam                  77.9          88.7
+ 5 Cruz, Oneil                 77.7          94.1
+ 6 Mitchell, Garrett           77.6          93.2
+ 7 Adell, Jo                   77.4          90.4
+ 8 Schwarber, Kyle             77.1          92.3
+ 9 Caglianone, Jac             77.0          93.3
+10 Contreras, Willson          77.0          89.8</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Cruz, Oneil"</span>, <span class="st">"Smith, Cam"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Kurtz, Nick"</span>)),</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> name)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Swinging Faster Mean Hitting the Ball Harder?"</span>,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Cruz, Oneil"</span>, <span class="st">"Smith, Cam"</span>,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Caminero, Junior"</span>, <span class="st">"Kurtz, Nick"</span>)),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> name),</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Cruz, Oneil"</span>, <span class="st">"Smith, Cam"</span>,</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Caminero, Junior"</span>, <span class="st">"Kurtz, Nick"</span>)),</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> name),</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Swinging Faster Mean Hitting the Ball Harder?"</span>,</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>hitting <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(avg_bat_speed) <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, avg_bat_speed, avg_hit_speed) <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 3
+   name              avg_bat_speed avg_hit_speed
+   &lt;chr&gt;                     &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Kwan, Steven               62.4          83.9
+ 2 Arraez, Luis               63.1          86.4
+ 3 Simpson, Chandler          65.1          83.7
+ 4 Meidroth, Chase            66.9          87.2
+ 5 Lukes, Nathan              67.0          86.9
+ 6 Paredes, Isaac             67.2          86  
+ 7 Perdomo, Geraldo           67.3          87.6
+ 8 Clement, Ernie             67.3          84.2
+ 9 Mangum, Jake               68.0          86  
+10 McKinstry, Zach            68.0          85.8</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray70"</span>) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Cruz, Oneil"</span>, <span class="st">"Kurtz, Nick"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Caminero, Junior"</span>, <span class="st">"Kwan, Steven"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Simpson, Chandler"</span>)),</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> name),</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Cruz, Oneil"</span>, <span class="st">"Kurtz, Nick"</span>,</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Caminero, Junior"</span>, <span class="st">"Kwan, Steven"</span>,</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Simpson, Chandler"</span>)),</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">case_when</span>(</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"Cruz, Oneil"</span> <span class="sc">~</span> <span class="st">"Oneil Cruz"</span>,</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"Kurtz, Nick"</span> <span class="sc">~</span> <span class="st">"Nick Kurtz"</span>,</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"Caminero, Junior"</span> <span class="sc">~</span> <span class="st">"Junior Caminero"</span>,</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"Kwan, Steven"</span> <span class="sc">~</span> <span class="st">"Steven Kwan"</span>,</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>      name <span class="sc">==</span> <span class="st">"Simpson, Chandler"</span> <span class="sc">~</span> <span class="st">"Chandler Simpson"</span></span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    )),</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Swinging Faster Mean Hitting the Ball Harder?"</span>,</span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span></span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(savant)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "last_name, first_name" "player_id"             "attempts"             
+ [4] "avg_hit_angle"         "anglesweetspotpercent" "max_hit_speed"        
+ [7] "avg_hit_speed"         "ev50"                  "fbld"                 
+[10] "gb"                    "max_distance"          "avg_distance"         
+[13] "avg_hr_distance"       "ev95plus"              "ev95percent"          
+[16] "barrels"               "brl_percent"           "brl_pa"               </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(standard)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 35
+     Rk Player   Age Team  Lg      WAR     G    PA    AB     R     H  `2B`  `3B`
+  &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1 Pete …    24 CHC   NL      9.8   162   726   626   119   175    31     8
+2     2 Iván …    26 STL   NL      2.9   161   717   605    98   146    26     1
+3     3 Micha…    28 CHC   NL      1.6   160   710   600    78   145    27     2
+4     4 Kevin…    21 DET   AL      7.1   156   707   605    97   168    28     5
+5     5 Zach …    25 LAA   AL      5.2   157   704   619   102   148    31     5
+6     6 Ferna…    27 SDP   NL      4.3   159   704   626    96   181    32     3
+# ℹ 22 more variables: HR &lt;dbl&gt;, RBI &lt;dbl&gt;, SB &lt;dbl&gt;, CS &lt;dbl&gt;, BB &lt;dbl&gt;,
+#   SO &lt;dbl&gt;, BA &lt;dbl&gt;, OBP &lt;dbl&gt;, SLG &lt;dbl&gt;, OPS &lt;dbl&gt;, `OPS+` &lt;dbl&gt;,
+#   rOBA &lt;dbl&gt;, `Rbat+` &lt;dbl&gt;, TB &lt;dbl&gt;, GIDP &lt;dbl&gt;, HBP &lt;dbl&gt;, SH &lt;dbl&gt;,
+#   SF &lt;dbl&gt;, IBB &lt;dbl&gt;, Pos &lt;chr&gt;, Awards &lt;chr&gt;, `Player-additional` &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>standard <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Player, Team, PA, BA, OPS) <span class="sc">|&gt;</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   Player               Team     PA    BA   OPS
+   &lt;chr&gt;                &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 Pete Crow-Armstrong* CHC     726 0.28  0.943
+ 2 Iván Herrera         STL     717 0.241 0.735
+ 3 Michael Busch*       CHC     710 0.242 0.745
+ 4 Kevin McGonigle*     DET     707 0.278 0.806
+ 5 Zach Neto            LAA     704 0.239 0.766
+ 6 Fernando Tatis Jr.   SDP     704 0.289 0.828
+ 7 Miguel Vargas        CHW     704 0.25  0.837
+ 8 Alex Bregman         CHC     702 0.265 0.819
+ 9 Junior Caminero      TBR     702 0.276 0.885
+10 Gunnar Henderson*    BAL     702 0.226 0.715</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>standard <span class="ot">&lt;-</span> standard <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">*"</span>, <span class="st">""</span>, Player))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">last_name, first_name</span><span class="st">`</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Last"</span>, <span class="st">"First"</span>),</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">paste</span>(First, Last))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>exitvelooops <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(standard, <span class="at">by =</span> <span class="st">"Player"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(exitvelooops)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 239
+Columns: 54
+$ Last                  &lt;chr&gt; "Arraez", "Arraez", "Arraez", "Hoerner", "Lopez"…
+$ First                 &lt;chr&gt; "Luis", "Luis", "Luis", "Nico", "Otto", "Ernie",…
+$ player_id             &lt;dbl&gt; 650333, 650333, 650333, 663538, 672640, 676391, …
+$ attempts              &lt;dbl&gt; 588, 588, 588, 578, 549, 539, 538, 522, 520, 518…
+$ avg_hit_angle         &lt;dbl&gt; 16.2, 16.2, 16.2, 12.0, 8.4, 17.4, 1.2, 6.0, 10.…
+$ anglesweetspotpercent &lt;dbl&gt; 39.1, 39.1, 39.1, 36.7, 30.4, 31.5, 25.3, 29.7, …
+$ max_hit_speed         &lt;dbl&gt; 104.4, 104.4, 104.4, 108.9, 112.8, 109.7, 106.8,…
+$ avg_hit_speed         &lt;dbl&gt; 86.4, 86.4, 86.4, 85.9, 89.1, 84.2, 83.7, 90.9, …
+$ ev50                  &lt;dbl&gt; 94.1, 94.1, 94.1, 96.1, 100.3, 94.0, 92.6, 102.5…
+$ fbld                  &lt;dbl&gt; 88.5, 88.5, 88.5, 89.0, 92.4, 88.4, 84.3, 93.9, …
+$ gb                    &lt;dbl&gt; 84.1, 84.1, 84.1, 85.0, 87.0, 81.3, 84.1, 90.3, …
+$ max_distance          &lt;dbl&gt; 399, 399, 399, 402, 427, 399, 355, 439, 434, 427…
+$ avg_distance          &lt;dbl&gt; 172, 172, 172, 155, 147, 165, 108, 146, 148, 160…
+$ avg_hr_distance       &lt;dbl&gt; 372, 372, 372, 383, 398, 376, NA, 388, 392, 392,…
+$ ev95plus              &lt;dbl&gt; 114, 114, 114, 168, 224, 112, 73, 250, 185, 216,…
+$ ev95percent           &lt;dbl&gt; 19.4, 19.4, 19.4, 29.1, 40.8, 20.8, 13.6, 48.1, …
+$ barrels               &lt;dbl&gt; 7, 7, 7, 8, 33, 11, 0, 37, 23, 33, 33, 37, 20, 6…
+$ brl_percent           &lt;dbl&gt; 1.2, 1.2, 1.2, 1.4, 6.0, 2.0, 0.0, 7.1, 4.4, 6.4…
+$ brl_pa                &lt;dbl&gt; 1.1, 1.1, 1.1, 1.2, 4.8, 1.8, 0.0, 5.4, 3.5, 4.7…
+$ Player                &lt;chr&gt; "Luis Arraez", "Luis Arraez", "Luis Arraez", "Ni…
+$ Rk                    &lt;dbl&gt; 41, 41, 41, 20, 21, 68, 77, 22, 45, 17, 8, 4, 72…
+$ Age                   &lt;dbl&gt; 29, 29, 29, 29, 27, 30, 25, 34, 29, 28, 32, 21, …
+$ Team                  &lt;chr&gt; "2TM", "SFG", "PHI", "CHC", "MIA", "TOR", "TBR",…
+$ Lg                    &lt;chr&gt; "NL", "NL", "NL", "NL", "NL", "AL", "AL", "AL", …
+$ WAR                   &lt;dbl&gt; 2.9, 3.0, -0.1, 2.1, 6.1, 1.1, 2.5, 2.4, -0.2, 0…
+$ G                     &lt;dbl&gt; 151, 105, 46, 159, 157, 158, 151, 154, 152, 160,…
+$ PA                    &lt;dbl&gt; 655, 464, 191, 689, 687, 621, 612, 686, 650, 696…
+$ AB                    &lt;dbl&gt; 596, 420, 176, 628, 627, 590, 571, 614, 597, 638…
+$ R                     &lt;dbl&gt; 67, 52, 15, 62, 94, 60, 66, 93, 58, 76, 92, 97, …
+$ H                     &lt;dbl&gt; 185, 136, 49, 165, 191, 153, 175, 180, 156, 166,…
+$ `2B`                  &lt;dbl&gt; 33, 23, 10, 29, 32, 33, 16, 26, 23, 25, 33, 28, …
+$ `3B`                  &lt;dbl&gt; 7, 7, 0, 1, 9, 1, 6, 1, 0, 2, 2, 5, 3, 3, 1, 1, …
+$ HR                    &lt;dbl&gt; 6, 4, 2, 8, 11, 9, 0, 22, 10, 18, 28, 18, 12, 25…
+$ RBI                   &lt;dbl&gt; 64, 43, 21, 72, 71, 48, 38, 85, 57, 78, 93, 72, …
+$ SB                    &lt;dbl&gt; 10, 10, 0, 23, 34, 7, 46, 3, 30, 2, 3, 12, 10, 3…
+$ CS                    &lt;dbl&gt; 1, 0, 1, 5, 5, 1, 14, 1, 9, 2, 1, 4, 3, 13, 4, 3…
+$ BB                    &lt;dbl&gt; 34, 25, 9, 43, 40, 22, 26, 56, 45, 49, 76, 95, 3…
+$ SO                    &lt;dbl&gt; 28, 21, 7, 58, 89, 58, 48, 98, 79, 127, 102, 100…
+$ BA                    &lt;dbl&gt; 0.310, 0.324, 0.278, 0.263, 0.305, 0.259, 0.306,…
+$ OBP                   &lt;dbl&gt; 0.345, 0.360, 0.309, 0.316, 0.349, 0.285, 0.333,…
+$ SLG                   &lt;dbl&gt; 0.419, 0.440, 0.369, 0.350, 0.437, 0.364, 0.356,…
+$ OPS                   &lt;dbl&gt; 0.765, 0.801, 0.678, 0.667, 0.786, 0.649, 0.689,…
+$ `OPS+`                &lt;dbl&gt; 113, 127, 82, 84, 122, 78, 94, 124, 93, 97, 124,…
+$ rOBA                  &lt;dbl&gt; 0.338, 0.356, 0.295, 0.312, 0.359, 0.294, 0.317,…
+$ `Rbat+`               &lt;dbl&gt; 112, 127, 75, 88, 126, 75, 93, 124, 95, 94, 127,…
+$ TB                    &lt;dbl&gt; 250, 185, 65, 220, 274, 215, 203, 274, 209, 249,…
+$ GIDP                  &lt;dbl&gt; 15, 7, 8, 14, 14, 15, 6, 15, 18, 19, 19, 5, 11, …
+$ HBP                   &lt;dbl&gt; 5, 4, 1, 10, 9, 2, 0, 10, 5, 2, 12, 3, 4, 7, 4, …
+$ SH                    &lt;dbl&gt; 6, 6, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 2, 1, 0, 0, …
+$ SF                    &lt;dbl&gt; 14, 9, 5, 8, 11, 7, 6, 6, 2, 7, 6, 4, 3, 6, 3, 3…
+$ IBB                   &lt;dbl&gt; 4, 4, 0, 0, 1, 0, 1, 6, 3, 0, 2, 1, 0, 6, 1, 14,…
+$ Pos                   &lt;chr&gt; "*4/H5D", "4/5DH", "4/H", "*46/H", "*6/DH", "*46…
+$ Awards                &lt;chr&gt; "AS", NA, NA, NA, "AS", "AS", NA, "AS", NA, NA, …
+$ `Player-additional`   &lt;chr&gt; "arraelu01", "arraelu01", "arraelu01", "hoernni0…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exitvelooops, <span class="fu">aes</span>(<span class="at">x =</span> avg_hit_speed, <span class="at">y =</span> OPS)) <span class="sc">+</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Hitting the Ball Harder Lead to Better Production?"</span>,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"OPS"</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exitvelooops, <span class="fu">aes</span>(<span class="at">x =</span> avg_hit_speed, <span class="at">y =</span> OPS)) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> exitvelooops <span class="sc">|&gt;</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> Player),</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> exitvelooops <span class="sc">|&gt;</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> Player),</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does Hitting the Ball Harder Lead to Better Offensive Production?"</span>,</span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"OPS"</span>,</span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span></span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">accuracy =</span> <span class="fl">0.001</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>comparative <span class="ot">&lt;-</span> exitvelooops <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"player_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(comparative)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 205
+Columns: 71
+$ Last                        &lt;chr&gt; "Arraez", "Arraez", "Arraez", "Hoerner", "…
+$ First                       &lt;chr&gt; "Luis", "Luis", "Luis", "Nico", "Otto", "E…
+$ player_id                   &lt;dbl&gt; 650333, 650333, 650333, 663538, 672640, 67…
+$ attempts                    &lt;dbl&gt; 588, 588, 588, 578, 549, 539, 538, 522, 52…
+$ avg_hit_angle               &lt;dbl&gt; 16.2, 16.2, 16.2, 12.0, 8.4, 17.4, 1.2, 6.…
+$ anglesweetspotpercent       &lt;dbl&gt; 39.1, 39.1, 39.1, 36.7, 30.4, 31.5, 25.3, …
+$ max_hit_speed               &lt;dbl&gt; 104.4, 104.4, 104.4, 108.9, 112.8, 109.7, …
+$ avg_hit_speed               &lt;dbl&gt; 86.4, 86.4, 86.4, 85.9, 89.1, 84.2, 83.7, …
+$ ev50                        &lt;dbl&gt; 94.1, 94.1, 94.1, 96.1, 100.3, 94.0, 92.6,…
+$ fbld                        &lt;dbl&gt; 88.5, 88.5, 88.5, 89.0, 92.4, 88.4, 84.3, …
+$ gb                          &lt;dbl&gt; 84.1, 84.1, 84.1, 85.0, 87.0, 81.3, 84.1, …
+$ max_distance                &lt;dbl&gt; 399, 399, 399, 402, 427, 399, 355, 439, 43…
+$ avg_distance                &lt;dbl&gt; 172, 172, 172, 155, 147, 165, 108, 146, 14…
+$ avg_hr_distance             &lt;dbl&gt; 372, 372, 372, 383, 398, 376, NA, 388, 392…
+$ ev95plus                    &lt;dbl&gt; 114, 114, 114, 168, 224, 112, 73, 250, 185…
+$ ev95percent                 &lt;dbl&gt; 19.4, 19.4, 19.4, 29.1, 40.8, 20.8, 13.6, …
+$ barrels                     &lt;dbl&gt; 7, 7, 7, 8, 33, 11, 0, 37, 23, 33, 33, 37,…
+$ brl_percent                 &lt;dbl&gt; 1.2, 1.2, 1.2, 1.4, 6.0, 2.0, 0.0, 7.1, 4.…
+$ brl_pa                      &lt;dbl&gt; 1.1, 1.1, 1.1, 1.2, 4.8, 1.8, 0.0, 5.4, 3.…
+$ Player                      &lt;chr&gt; "Luis Arraez", "Luis Arraez", "Luis Arraez…
+$ Rk                          &lt;dbl&gt; 41, 41, 41, 20, 21, 68, 77, 22, 45, 17, 8,…
+$ Age                         &lt;dbl&gt; 29, 29, 29, 29, 27, 30, 25, 34, 29, 28, 32…
+$ Team                        &lt;chr&gt; "2TM", "SFG", "PHI", "CHC", "MIA", "TOR", …
+$ Lg                          &lt;chr&gt; "NL", "NL", "NL", "NL", "NL", "AL", "AL", …
+$ WAR                         &lt;dbl&gt; 2.9, 3.0, -0.1, 2.1, 6.1, 1.1, 2.5, 2.4, -…
+$ G                           &lt;dbl&gt; 151, 105, 46, 159, 157, 158, 151, 154, 152…
+$ PA                          &lt;dbl&gt; 655, 464, 191, 689, 687, 621, 612, 686, 65…
+$ AB                          &lt;dbl&gt; 596, 420, 176, 628, 627, 590, 571, 614, 59…
+$ R                           &lt;dbl&gt; 67, 52, 15, 62, 94, 60, 66, 93, 58, 76, 92…
+$ H                           &lt;dbl&gt; 185, 136, 49, 165, 191, 153, 175, 180, 156…
+$ `2B`                        &lt;dbl&gt; 33, 23, 10, 29, 32, 33, 16, 26, 23, 25, 33…
+$ `3B`                        &lt;dbl&gt; 7, 7, 0, 1, 9, 1, 6, 1, 0, 2, 2, 5, 3, 3, …
+$ HR                          &lt;dbl&gt; 6, 4, 2, 8, 11, 9, 0, 22, 10, 18, 28, 18, …
+$ RBI                         &lt;dbl&gt; 64, 43, 21, 72, 71, 48, 38, 85, 57, 78, 93…
+$ SB                          &lt;dbl&gt; 10, 10, 0, 23, 34, 7, 46, 3, 30, 2, 3, 12,…
+$ CS                          &lt;dbl&gt; 1, 0, 1, 5, 5, 1, 14, 1, 9, 2, 1, 4, 3, 13…
+$ BB                          &lt;dbl&gt; 34, 25, 9, 43, 40, 22, 26, 56, 45, 49, 76,…
+$ SO                          &lt;dbl&gt; 28, 21, 7, 58, 89, 58, 48, 98, 79, 127, 10…
+$ BA                          &lt;dbl&gt; 0.310, 0.324, 0.278, 0.263, 0.305, 0.259, …
+$ OBP                         &lt;dbl&gt; 0.345, 0.360, 0.309, 0.316, 0.349, 0.285, …
+$ SLG                         &lt;dbl&gt; 0.419, 0.440, 0.369, 0.350, 0.437, 0.364, …
+$ OPS                         &lt;dbl&gt; 0.765, 0.801, 0.678, 0.667, 0.786, 0.649, …
+$ `OPS+`                      &lt;dbl&gt; 113, 127, 82, 84, 122, 78, 94, 124, 93, 97…
+$ rOBA                        &lt;dbl&gt; 0.338, 0.356, 0.295, 0.312, 0.359, 0.294, …
+$ `Rbat+`                     &lt;dbl&gt; 112, 127, 75, 88, 126, 75, 93, 124, 95, 94…
+$ TB                          &lt;dbl&gt; 250, 185, 65, 220, 274, 215, 203, 274, 209…
+$ GIDP                        &lt;dbl&gt; 15, 7, 8, 14, 14, 15, 6, 15, 18, 19, 19, 5…
+$ HBP                         &lt;dbl&gt; 5, 4, 1, 10, 9, 2, 0, 10, 5, 2, 12, 3, 4, …
+$ SH                          &lt;dbl&gt; 6, 6, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 2, 1, …
+$ SF                          &lt;dbl&gt; 14, 9, 5, 8, 11, 7, 6, 6, 2, 7, 6, 4, 3, 6…
+$ IBB                         &lt;dbl&gt; 4, 4, 0, 0, 1, 0, 1, 6, 3, 0, 2, 1, 0, 6, …
+$ Pos                         &lt;chr&gt; "*4/H5D", "4/5DH", "4/H", "*46/H", "*6/DH"…
+$ Awards                      &lt;chr&gt; "AS", NA, NA, NA, "AS", "AS", NA, "AS", NA…
+$ `Player-additional`         &lt;chr&gt; "arraelu01", "arraelu01", "arraelu01", "ho…
+$ name                        &lt;chr&gt; "Arraez, Luis", "Arraez, Luis", "Arraez, L…
+$ swings_competitive          &lt;dbl&gt; 1027, 1027, 1027, 1034, 1005, 959, 787, 10…
+$ percent_swings_competitive  &lt;dbl&gt; 0.9064431, 0.9064431, 0.9064431, 0.9038462…
+$ contact                     &lt;dbl&gt; 952, 952, 952, 927, 827, 838, 713, 942, 83…
+$ avg_bat_speed               &lt;dbl&gt; 63.11282, 63.11282, 63.11282, 68.32074, 71…
+$ hard_swing_rate             &lt;dbl&gt; 0.0009737098, 0.0009737098, 0.0009737098, …
+$ squared_up_per_bat_contact  &lt;dbl&gt; 0.4590336, 0.4590336, 0.4590336, 0.3948220…
+$ squared_up_per_swing        &lt;dbl&gt; 0.4255112, 0.4255112, 0.4255112, 0.3539652…
+$ blast_per_bat_contact       &lt;dbl&gt; 0.01785714, 0.01785714, 0.01785714, 0.0744…
+$ blast_per_swing             &lt;dbl&gt; 0.01655307, 0.01655307, 0.01655307, 0.0667…
+$ swing_length                &lt;dbl&gt; 5.869335, 5.869335, 5.869335, 7.281296, 6.…
+$ swords                      &lt;dbl&gt; 3, 3, 3, 14, 23, 31, 10, 12, 18, 10, 17, 1…
+$ batter_run_value            &lt;dbl&gt; -16.2954281, -16.2954281, -16.2954281, -26…
+$ whiffs                      &lt;dbl&gt; 75, 75, 75, 107, 178, 121, 74, 143, 147, 2…
+$ whiff_per_swing             &lt;dbl&gt; 0.07302824, 0.07302824, 0.07302824, 0.1034…
+$ batted_ball_events          &lt;dbl&gt; 517, 517, 517, 532, 491, 485, 468, 480, 47…
+$ batted_ball_event_per_swing &lt;dbl&gt; 0.5034080, 0.5034080, 0.5034080, 0.5145068…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>standard <span class="ot">&lt;-</span> standard <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Player))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>exitveloops <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(standard, <span class="at">by =</span> <span class="st">"Player"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>comparative <span class="ot">&lt;-</span> exitveloops <span class="sc">|&gt;</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"player_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(comparative)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 186
+Columns: 71
+$ Last                        &lt;chr&gt; "Arraez", "Hoerner", "Lopez", "Clement", "…
+$ First                       &lt;chr&gt; "Luis", "Nico", "Otto", "Ernie", "Chandler…
+$ player_id                   &lt;dbl&gt; 650333, 663538, 672640, 676391, 802415, 65…
+$ attempts                    &lt;dbl&gt; 588, 578, 549, 539, 538, 522, 520, 518, 51…
+$ avg_hit_angle               &lt;dbl&gt; 16.2, 12.0, 8.4, 17.4, 1.2, 6.0, 10.8, 7.8…
+$ anglesweetspotpercent       &lt;dbl&gt; 39.1, 36.7, 30.4, 31.5, 25.3, 29.7, 35.4, …
+$ max_hit_speed               &lt;dbl&gt; 104.4, 108.9, 112.8, 109.7, 106.8, 113.7, …
+$ avg_hit_speed               &lt;dbl&gt; 86.4, 85.9, 89.1, 84.2, 83.7, 90.9, 87.0, …
+$ ev50                        &lt;dbl&gt; 94.1, 96.1, 100.3, 94.0, 92.6, 102.5, 98.4…
+$ fbld                        &lt;dbl&gt; 88.5, 89.0, 92.4, 88.4, 84.3, 93.9, 90.3, …
+$ gb                          &lt;dbl&gt; 84.1, 85.0, 87.0, 81.3, 84.1, 90.3, 86.3, …
+$ max_distance                &lt;dbl&gt; 399, 402, 427, 399, 355, 439, 434, 427, 41…
+$ avg_distance                &lt;dbl&gt; 172, 155, 147, 165, 108, 146, 148, 160, 17…
+$ avg_hr_distance             &lt;dbl&gt; 372, 383, 398, 376, NA, 388, 392, 392, 390…
+$ ev95plus                    &lt;dbl&gt; 114, 168, 224, 112, 73, 250, 185, 216, 193…
+$ ev95percent                 &lt;dbl&gt; 19.4, 29.1, 40.8, 20.8, 13.6, 48.1, 35.6, …
+$ barrels                     &lt;dbl&gt; 7, 8, 33, 11, 0, 37, 23, 33, 33, 37, 20, 6…
+$ brl_percent                 &lt;dbl&gt; 1.2, 1.4, 6.0, 2.0, 0.0, 7.1, 4.4, 6.4, 6.…
+$ brl_pa                      &lt;dbl&gt; 1.1, 1.2, 4.8, 1.8, 0.0, 5.4, 3.5, 4.7, 4.…
+$ Player                      &lt;chr&gt; "Luis Arraez", "Nico Hoerner", "Otto Lopez…
+$ Rk                          &lt;dbl&gt; 41, 20, 21, 68, 77, 22, 45, 17, 8, 4, 72, …
+$ Age                         &lt;dbl&gt; 29, 29, 27, 30, 25, 34, 29, 28, 32, 21, 31…
+$ Team                        &lt;chr&gt; "2TM", "CHC", "MIA", "TOR", "TBR", "TBR", …
+$ Lg                          &lt;chr&gt; "NL", "NL", "NL", "AL", "AL", "AL", "AL", …
+$ WAR                         &lt;dbl&gt; 2.9, 2.1, 6.1, 1.1, 2.5, 2.4, -0.2, 0.7, 5…
+$ G                           &lt;dbl&gt; 151, 159, 157, 158, 151, 154, 152, 160, 15…
+$ PA                          &lt;dbl&gt; 655, 689, 687, 621, 612, 686, 650, 696, 70…
+$ AB                          &lt;dbl&gt; 596, 628, 627, 590, 571, 614, 597, 638, 60…
+$ R                           &lt;dbl&gt; 67, 62, 94, 60, 66, 93, 58, 76, 92, 97, 66…
+$ H                           &lt;dbl&gt; 185, 165, 191, 153, 175, 180, 156, 166, 16…
+$ `2B`                        &lt;dbl&gt; 33, 29, 32, 33, 16, 26, 23, 25, 33, 28, 28…
+$ `3B`                        &lt;dbl&gt; 7, 1, 9, 1, 6, 1, 0, 2, 2, 5, 3, 3, 1, 1, …
+$ HR                          &lt;dbl&gt; 6, 8, 11, 9, 0, 22, 10, 18, 28, 18, 12, 25…
+$ RBI                         &lt;dbl&gt; 64, 72, 71, 48, 38, 85, 57, 78, 93, 72, 73…
+$ SB                          &lt;dbl&gt; 10, 23, 34, 7, 46, 3, 30, 2, 3, 12, 10, 38…
+$ CS                          &lt;dbl&gt; 1, 5, 5, 1, 14, 1, 9, 2, 1, 4, 3, 13, 4, 3…
+$ BB                          &lt;dbl&gt; 34, 43, 40, 22, 26, 56, 45, 49, 76, 95, 35…
+$ SO                          &lt;dbl&gt; 28, 58, 89, 58, 48, 98, 79, 127, 102, 100,…
+$ BA                          &lt;dbl&gt; 0.310, 0.263, 0.305, 0.259, 0.306, 0.293, …
+$ OBP                         &lt;dbl&gt; 0.345, 0.316, 0.349, 0.285, 0.333, 0.359, …
+$ SLG                         &lt;dbl&gt; 0.419, 0.350, 0.437, 0.364, 0.356, 0.446, …
+$ OPS                         &lt;dbl&gt; 0.765, 0.667, 0.786, 0.649, 0.689, 0.805, …
+$ `OPS+`                      &lt;dbl&gt; 113, 84, 122, 78, 94, 124, 93, 97, 124, 12…
+$ rOBA                        &lt;dbl&gt; 0.338, 0.312, 0.359, 0.294, 0.317, 0.356, …
+$ `Rbat+`                     &lt;dbl&gt; 112, 88, 126, 75, 93, 124, 95, 94, 127, 12…
+$ TB                          &lt;dbl&gt; 250, 220, 274, 215, 203, 274, 209, 249, 28…
+$ GIDP                        &lt;dbl&gt; 15, 14, 14, 15, 6, 15, 18, 19, 19, 5, 11, …
+$ HBP                         &lt;dbl&gt; 5, 10, 9, 2, 0, 10, 5, 2, 12, 3, 4, 7, 4, …
+$ SH                          &lt;dbl&gt; 6, 0, 0, 0, 9, 0, 0, 0, 0, 0, 2, 1, 0, 0, …
+$ SF                          &lt;dbl&gt; 14, 8, 11, 7, 6, 6, 2, 7, 6, 4, 3, 6, 3, 3…
+$ IBB                         &lt;dbl&gt; 4, 0, 1, 0, 1, 6, 3, 0, 2, 1, 0, 6, 1, 14,…
+$ Pos                         &lt;chr&gt; "*4/H5D", "*46/H", "*6/DH", "*465/H7", "*7…
+$ Awards                      &lt;chr&gt; "AS", NA, "AS", "AS", NA, "AS", NA, NA, NA…
+$ `Player-additional`         &lt;chr&gt; "arraelu01", "hoernni01", "lopezot01", "cl…
+$ name                        &lt;chr&gt; "Arraez, Luis", "Hoerner, Nico", "Lopez, O…
+$ swings_competitive          &lt;dbl&gt; 1027, 1034, 1005, 959, 787, 1085, 982, 121…
+$ percent_swings_competitive  &lt;dbl&gt; 0.9064431, 0.9038462, 0.9045905, 0.8996248…
+$ contact                     &lt;dbl&gt; 952, 927, 827, 838, 713, 942, 835, 988, 88…
+$ avg_bat_speed               &lt;dbl&gt; 63.11282, 68.32074, 71.87849, 67.30337, 65…
+$ hard_swing_rate             &lt;dbl&gt; 0.0009737098, 0.0145067698, 0.2348258706, …
+$ squared_up_per_bat_contact  &lt;dbl&gt; 0.4590336, 0.3948220, 0.3784764, 0.3926014…
+$ squared_up_per_swing        &lt;dbl&gt; 0.4255112, 0.3539652, 0.3114428, 0.3430657…
+$ blast_per_bat_contact       &lt;dbl&gt; 0.01785714, 0.07443366, 0.18137848, 0.0525…
+$ blast_per_swing             &lt;dbl&gt; 0.01655307, 0.06673114, 0.14925373, 0.0458…
+$ swing_length                &lt;dbl&gt; 5.869335, 7.281296, 6.753118, 7.107732, 6.…
+$ swords                      &lt;dbl&gt; 3, 14, 23, 31, 10, 12, 18, 10, 17, 18, 15,…
+$ batter_run_value            &lt;dbl&gt; -16.2954281, -26.9644497, -3.3107748, -26.…
+$ whiffs                      &lt;dbl&gt; 75, 107, 178, 121, 74, 143, 147, 226, 138,…
+$ whiff_per_swing             &lt;dbl&gt; 0.07302824, 0.10348162, 0.17711443, 0.1261…
+$ batted_ball_events          &lt;dbl&gt; 517, 532, 491, 485, 468, 480, 478, 470, 48…
+$ batted_ball_event_per_swing &lt;dbl&gt; 0.5034080, 0.5145068, 0.4885572, 0.5057351…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>correlations <span class="ot">&lt;-</span> comparative <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bat_speed_OPS =</span> <span class="fu">cor</span>(avg_bat_speed, OPS, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">exit_velocity_OPS =</span> <span class="fu">cor</span>(avg_hit_speed, OPS, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">hard_hit_OPS =</span> <span class="fu">cor</span>(ev95percent, OPS, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">barrel_percent_OPS =</span> <span class="fu">cor</span>(brl_percent, OPS, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">bat_speed_BA =</span> <span class="fu">cor</span>(avg_bat_speed, BA, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">exit_velocity_BA =</span> <span class="fu">cor</span>(avg_hit_speed, BA, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hard_hit_BA =</span> <span class="fu">cor</span>(ev95percent, BA, <span class="at">method =</span> <span class="st">"pearson"</span>),</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">barrel_percent_BA =</span> <span class="fu">cor</span>(brl_percent, BA, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>correlations</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  bat_speed_OPS exit_velocity_OPS hard_hit_OPS barrel_percent_OPS bat_speed_BA
+          &lt;dbl&gt;             &lt;dbl&gt;        &lt;dbl&gt;              &lt;dbl&gt;        &lt;dbl&gt;
+1         0.320             0.516        0.509              0.548       -0.148
+# ℹ 3 more variables: exit_velocity_BA &lt;dbl&gt;, hard_hit_BA &lt;dbl&gt;,
+#   barrel_percent_BA &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>correlation_dumbbell <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Metric =</span> <span class="fu">c</span>(<span class="st">"Bat Speed"</span>, <span class="st">"Exit Velocity"</span>,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hard-Hit Percentage"</span>, <span class="st">"Barrel Percentage"</span>),</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">OPS =</span> <span class="fu">c</span>(<span class="fl">0.3202792</span>, <span class="fl">0.5164342</span>, <span class="fl">0.509401</span>, <span class="fl">0.5481218</span>),</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">BA =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1481463</span>, <span class="fl">0.04647769</span>, <span class="fl">0.004356435</span>, <span class="sc">-</span><span class="fl">0.1000794</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>correlation_dumbbell</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Metric       OPS           BA
+1           Bat Speed 0.3202792 -0.148146300
+2       Exit Velocity 0.5164342  0.046477690
+3 Hard-Hit Percentage 0.5094010  0.004356435
+4   Barrel Percentage 0.5481218 -0.100079400</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> correlation_dumbbell,</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Metric, <span class="at">yend =</span> Metric,</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> OPS, <span class="at">xend =</span> BA</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"gray"</span>,</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.5</span></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> correlation_dumbbell,</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> Metric, <span class="at">x =</span> OPS, <span class="at">color =</span> <span class="st">"OPS"</span>),</span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> correlation_dumbbell,</span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> Metric, <span class="at">x =</span> BA, <span class="at">color =</span> <span class="st">"BA"</span>),</span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Outcome"</span>,</span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"OPS"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"BA"</span> <span class="ot">=</span> <span class="st">"red"</span>)</span>
+<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"How Do Advanced Hitting Metrics Compare With Batting Average?"</span>,</span>
+<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Pearson Correlation"</span>,</span>
+<span id="cb70-28"><a href="#cb70-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb70-30"><a href="#cb70-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mlbcharts_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
