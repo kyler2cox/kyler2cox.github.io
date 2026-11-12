@@ -385,47 +385,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/exit_velocity.csv"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>bat_tracking <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/bat_tracking.csv"</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>hitting <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"player_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>hitting <span class="ot">&lt;-</span> hitting <span class="sc">|&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(name, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Last"</span>, <span class="st">"First"</span>), <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">paste</span>(First, Last))</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray70"</span>) <span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> Player),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hitting <span class="sc">|&gt;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> Player),</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Swing Hard, Hit it Hard. Right?"</span>,</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span>,</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant | By Your Name"</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  ) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>bat_tracking <span class="ot">&lt;-</span> bat_tracking <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, avg_bat_speed) <span class="sc">|&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">player_id =</span> id)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(player_id, <span class="st">`</span><span class="at">last_name, first_name</span><span class="st">`</span>, avg_hit_speed) <span class="sc">|&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">last_name, first_name</span><span class="st">`</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Last"</span>, <span class="st">"First"</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    First <span class="sc">==</span> <span class="st">"Oneil"</span> <span class="sc">&amp;</span> Last <span class="sc">==</span> <span class="st">"Cruz"</span> <span class="sc">~</span> <span class="st">"Oneil Cruz"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    First <span class="sc">==</span> <span class="st">"Nick"</span> <span class="sc">&amp;</span> Last <span class="sc">==</span> <span class="st">"Kurtz"</span> <span class="sc">~</span> <span class="st">"Nick Kurtz"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    First <span class="sc">==</span> <span class="st">"Junior"</span> <span class="sc">&amp;</span> Last <span class="sc">==</span> <span class="st">"Caminero"</span> <span class="sc">~</span> <span class="st">"Junior Caminero"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    First <span class="sc">==</span> <span class="st">"Steven"</span> <span class="sc">&amp;</span> Last <span class="sc">==</span> <span class="st">"Kwan"</span> <span class="sc">~</span> <span class="st">"Steven Kwan"</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    First <span class="sc">==</span> <span class="st">"Chandler"</span> <span class="sc">&amp;</span> Last <span class="sc">==</span> <span class="st">"Simpson"</span> <span class="sc">~</span> <span class="st">"Chandler Simpson"</span>,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>hitting <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a> <span class="fu">inner_join</span>(bat_tracking)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>highlighted_hitting <span class="ot">&lt;-</span> hitting <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Player) <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hitting, <span class="fu">aes</span>(<span class="at">x =</span> avg_bat_speed, <span class="at">y =</span> avg_hit_speed)) <span class="sc">+</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> highlighted_hitting,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> Player),</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> highlighted_hitting,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> Player),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Swing Hard, Hit it Hard... right?"</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Players with faster bat speeds tend to hit the ball harder."</span>,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Bat Speed (mph)"</span>,</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span>,</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant | By Kyler Cox"</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">"bold"</span>), </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -441,51 +451,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>standard <span class="ot">&lt;-</span> standard <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">*"</span>, <span class="st">""</span>, Player)) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Player))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>savant <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">last_name, first_name</span><span class="st">`</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"Last"</span>, <span class="st">"First"</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">", "</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Player =</span> <span class="fu">paste</span>(First, Last))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>exitveloops <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(standard, <span class="at">by =</span> <span class="st">"Player"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exitveloops, <span class="fu">aes</span>(<span class="at">x =</span> avg_hit_speed, <span class="at">y =</span> OPS)) <span class="sc">+</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"gray"</span>) <span class="sc">+</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> exitveloops <span class="sc">|&gt;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> Player),</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> exitveloops <span class="sc">|&gt;</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Chandler Simpson"</span>)),</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> Player),</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Player, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"First"</span>, <span class="st">"Last"</span>), <span class="at">sep =</span> <span class="st">" "</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(First, Last, BA, OBP, SLG, HR, OPS)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>exit_velo_stats <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(standard)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>highlighted_exit_velo <span class="ot">&lt;-</span> exit_velo_stats <span class="sc">|&gt;</span>  </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Player) <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(exit_velo_stats, <span class="fu">aes</span>(<span class="at">x =</span> avg_hit_speed, <span class="at">y =</span> OPS)) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"lightgrey"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> highlighted_exit_velo,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">color =</span> Player),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"maroon"</span>, <span class="at">linewidth =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> highlighted_exit_velo,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> Player),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.5</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Hard Contact Pays Off"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Hitters who hit the ball harder tend to post a higher OPS."</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"OPS"</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant, Baseball Reference | By Kyler Cox"</span></span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Hard Contact Pays Off"</span>,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Exit Velocity (mph)"</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"OPS"</span>,</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Highlighted Players"</span>,</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: Baseball Savant, Baseball Reference | By Kyler Cox"</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">accuracy =</span> <span class="fl">0.001</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -499,100 +501,142 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>standard <span class="ot">&lt;-</span> standard <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">duplicated</span>(Player))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hitter_stats <span class="ot">&lt;-</span> exit_velo_stats <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>exitveloops <span class="ot">&lt;-</span> savant <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(standard, <span class="at">by =</span> <span class="st">"Player"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>comparative <span class="ot">&lt;-</span> exitveloops <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(bat_tracking, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"player_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="ot">&lt;-</span> comparative <span class="sc">|&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Player <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Oneil Cruz"</span>, <span class="st">"Nick Kurtz"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Junior Caminero"</span>, <span class="st">"Steven Kwan"</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Chandler Simpson"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Player, avg_bat_speed, avg_hit_speed, BA, OBP, SLG, HR, OPS)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="ot">&lt;-</span> hitter_stats <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Player) <span class="sc">==</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Player, avg_bat_speed, avg_hit_speed, BA, OBP, SLG, HR, OPS)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="ot">&lt;-</span> player_comparison <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_bat_speed =</span> <span class="fu">round</span>(avg_bat_speed, <span class="dv">1</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">avg_hit_speed =</span> <span class="fu">round</span>(avg_hit_speed, <span class="dv">1</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">BA =</span> <span class="fu">round</span>(BA, <span class="dv">3</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">OBP =</span> <span class="fu">round</span>(OBP, <span class="dv">3</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">SLG =</span> <span class="fu">round</span>(SLG, <span class="dv">3</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">OPS =</span> <span class="fu">round</span>(OPS, <span class="dv">3</span>))</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="ot">&lt;-</span> player_comparison <span class="sc">|&gt;</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_bat_speed =</span> <span class="fu">round</span>(avg_bat_speed, <span class="dv">1</span>),</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">avg_hit_speed =</span> <span class="fu">round</span>(avg_hit_speed, <span class="dv">1</span>),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">BA =</span> <span class="fu">round</span>(BA, <span class="dv">3</span>),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">OBP =</span> <span class="fu">round</span>(OBP, <span class="dv">3</span>),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">SLG =</span> <span class="fu">round</span>(SLG, <span class="dv">3</span>),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">OPS =</span> <span class="fu">round</span>(OPS, <span class="dv">3</span>))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span> <span class="ot">=</span> avg_bat_speed,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span> <span class="ot">=</span> avg_hit_speed,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span> <span class="ot">=</span> BA,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span> <span class="ot">=</span> OBP,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span> <span class="ot">=</span> SLG,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span> <span class="ot">=</span> HR)</span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="ot">&lt;-</span> player_comparison <span class="sc">|&gt;</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span> <span class="ot">=</span> avg_bat_speed,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span> <span class="ot">=</span> avg_hit_speed,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span> <span class="ot">=</span> BA,</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span> <span class="ot">=</span> OBP,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span> <span class="ot">=</span> SLG,</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span> <span class="ot">=</span> HR)</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="sc">|&gt;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_header</span>(</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"So Swinging Hard Does Matter..."</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"In some cases, correlation does equal causation:"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>player_comparison <span class="sc">|&gt;</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"So Swinging Hard Does Matter..."</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"In some cases, correlation does equal causation:"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">Player =</span> <span class="st">"Player"</span>,</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Swing Speed"</span>,</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Exit Velo"</span>,</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"BA"</span>,</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"OBP"</span>,</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"SLG"</span>,</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"HR"</span>,</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">OPS =</span> <span class="st">"OPS"</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>, <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>),</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">1</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span>, <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span>,</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span>, OPS),</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Player =</span> <span class="st">"Player"</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Swing Speed"</span>,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Exit Velo"</span>,</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"BA"</span>,</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"OBP"</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"SLG"</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"HR"</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">OPS =</span> <span class="st">"OPS"</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>, <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>),</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">1</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span>, <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span>, OPS),</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">3</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#F4C7C3"</span>),</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">rows =</span> Player <span class="sc">==</span> <span class="st">"Junior Caminero"</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"lightblue"</span>),</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">rows =</span> Player <span class="sc">==</span> <span class="st">"Steven Kwan"</span>)</span>
 <span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>, <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>,</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span>, <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span>,</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span>, <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span>, OPS),</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#6BAED6"</span>, <span class="st">"#FFFFFF"</span>, <span class="st">"#CB181D"</span>)</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">"Source: Baseball Savant, Baseball Reference | By Kyler Cox"</span></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>,</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">Average Bat Speed</span><span class="st">`</span>)</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>,</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">Average Exit Velocity</span><span class="st">`</span>)</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span>,</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">Batting Average</span><span class="st">`</span>)</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span>,</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">On-Base Percentage</span><span class="st">`</span>)</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span>,</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">Slugging Percentage</span><span class="st">`</span>)</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span>,</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> <span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span> <span class="sc">==</span> <span class="fu">max</span>(<span class="st">`</span><span class="at">Home Runs</span><span class="st">`</span>)</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> OPS,</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> OPS <span class="sc">==</span> <span class="fu">max</span>(OPS)</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="st">"Source: Baseball Savant, Baseball Reference | By Kyler Cox"</span></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="tmewzvvvbj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tmewzvvvbj table {
+<div id="fxsknyftzj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fxsknyftzj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tmewzvvvbj thead, #tmewzvvvbj tbody, #tmewzvvvbj tfoot, #tmewzvvvbj tr, #tmewzvvvbj td, #tmewzvvvbj th {
+#fxsknyftzj thead, #fxsknyftzj tbody, #fxsknyftzj tfoot, #fxsknyftzj tr, #fxsknyftzj td, #fxsknyftzj th {
   border-style: none;
 }
 
-#tmewzvvvbj p {
+#fxsknyftzj p {
   margin: 0;
   padding: 0;
 }
 
-#tmewzvvvbj .gt_table {
+#fxsknyftzj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -618,12 +662,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_caption {
+#fxsknyftzj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tmewzvvvbj .gt_title {
+#fxsknyftzj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -635,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#tmewzvvvbj .gt_subtitle {
+#fxsknyftzj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -647,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#tmewzvvvbj .gt_heading {
+#fxsknyftzj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -659,13 +703,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_bottom_border {
+#fxsknyftzj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_col_headings {
+#fxsknyftzj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -680,7 +724,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_col_heading {
+#fxsknyftzj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -700,7 +744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#tmewzvvvbj .gt_column_spanner_outer {
+#fxsknyftzj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -712,15 +756,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#tmewzvvvbj .gt_column_spanner_outer:first-child {
+#fxsknyftzj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tmewzvvvbj .gt_column_spanner_outer:last-child {
+#fxsknyftzj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tmewzvvvbj .gt_column_spanner {
+#fxsknyftzj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -732,11 +776,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#tmewzvvvbj .gt_spanner_row {
+#fxsknyftzj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tmewzvvvbj .gt_group_heading {
+#fxsknyftzj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -762,7 +806,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#tmewzvvvbj .gt_empty_group_heading {
+#fxsknyftzj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -777,15 +821,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#tmewzvvvbj .gt_from_md > :first-child {
+#fxsknyftzj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tmewzvvvbj .gt_from_md > :last-child {
+#fxsknyftzj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tmewzvvvbj .gt_row {
+#fxsknyftzj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -804,7 +848,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#tmewzvvvbj .gt_stub {
+#fxsknyftzj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -817,7 +861,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tmewzvvvbj .gt_stub_row_group {
+#fxsknyftzj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -831,15 +875,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#tmewzvvvbj .gt_row_group_first td {
+#fxsknyftzj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tmewzvvvbj .gt_row_group_first th {
+#fxsknyftzj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tmewzvvvbj .gt_summary_row {
+#fxsknyftzj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -849,16 +893,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tmewzvvvbj .gt_first_summary_row {
+#fxsknyftzj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_first_summary_row.thick {
+#fxsknyftzj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tmewzvvvbj .gt_last_summary_row {
+#fxsknyftzj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -868,7 +912,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_grand_summary_row {
+#fxsknyftzj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -878,7 +922,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tmewzvvvbj .gt_first_grand_summary_row {
+#fxsknyftzj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,7 +932,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_last_grand_summary_row_top {
+#fxsknyftzj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,11 +942,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_striped {
+#fxsknyftzj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tmewzvvvbj .gt_table_body {
+#fxsknyftzj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -911,7 +955,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_footnotes {
+#fxsknyftzj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -925,7 +969,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_footnote {
+#fxsknyftzj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -934,7 +978,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tmewzvvvbj .gt_sourcenotes {
+#fxsknyftzj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -948,7 +992,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tmewzvvvbj .gt_sourcenote {
+#fxsknyftzj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -956,72 +1000,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tmewzvvvbj .gt_left {
+#fxsknyftzj .gt_left {
   text-align: left;
 }
 
-#tmewzvvvbj .gt_center {
+#fxsknyftzj .gt_center {
   text-align: center;
 }
 
-#tmewzvvvbj .gt_right {
+#fxsknyftzj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tmewzvvvbj .gt_font_normal {
+#fxsknyftzj .gt_font_normal {
   font-weight: normal;
 }
 
-#tmewzvvvbj .gt_font_bold {
+#fxsknyftzj .gt_font_bold {
   font-weight: bold;
 }
 
-#tmewzvvvbj .gt_font_italic {
+#fxsknyftzj .gt_font_italic {
   font-style: italic;
 }
 
-#tmewzvvvbj .gt_super {
+#fxsknyftzj .gt_super {
   font-size: 65%;
 }
 
-#tmewzvvvbj .gt_footnote_marks {
+#fxsknyftzj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tmewzvvvbj .gt_asterisk {
+#fxsknyftzj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tmewzvvvbj .gt_indent_1 {
+#fxsknyftzj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tmewzvvvbj .gt_indent_2 {
+#fxsknyftzj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tmewzvvvbj .gt_indent_3 {
+#fxsknyftzj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tmewzvvvbj .gt_indent_4 {
+#fxsknyftzj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tmewzvvvbj .gt_indent_5 {
+#fxsknyftzj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tmewzvvvbj .katex-display {
+#fxsknyftzj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tmewzvvvbj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#fxsknyftzj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1047,54 +1091,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Player">Chandler Simpson</td>
-<td class="gt_row gt_right" headers="Average Bat Speed" style="background-color: #9EC7E3; color: #000000">65.1</td>
-<td class="gt_row gt_right" headers="Average Exit Velocity" style="background-color: #6BAED6; color: #000000">83.7</td>
-<td class="gt_row gt_right" headers="Batting Average" style="background-color: #CB181D; color: #FFFFFF">0.306</td>
-<td class="gt_row gt_right" headers="On-Base Percentage" style="background-color: #6BAED6; color: #000000">0.333</td>
-<td class="gt_row gt_right" headers="Slugging Percentage" style="background-color: #79B4D9; color: #000000">0.356</td>
-<td class="gt_row gt_right" headers="Home Runs" style="background-color: #6BAED6; color: #000000">0</td>
-<td class="gt_row gt_right" headers="OPS" style="background-color: #6BAED6; color: #000000">0.689</td>
+<td class="gt_row gt_left" headers="Player" style="background-color: #F4C7C3">Junior Caminero</td>
+<td class="gt_row gt_right" headers="Average Bat Speed" style="background-color: #F4C7C3; font-weight: bold">79.4</td>
+<td class="gt_row gt_right" headers="Average Exit Velocity" style="background-color: #F4C7C3">92.7</td>
+<td class="gt_row gt_right" headers="Batting Average" style="background-color: #F4C7C3">0.276</td>
+<td class="gt_row gt_right" headers="On-Base Percentage" style="background-color: #F4C7C3">0.360</td>
+<td class="gt_row gt_right" headers="Slugging Percentage" style="background-color: #F4C7C3; font-weight: bold">0.524</td>
+<td class="gt_row gt_right" headers="Home Runs" style="background-color: #F4C7C3; font-weight: bold">42</td>
+<td class="gt_row gt_right" headers="OPS" style="background-color: #F4C7C3; font-weight: bold">0.885</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Player">Steven Kwan</td>
-<td class="gt_row gt_right gt_striped" headers="Average Bat Speed" style="background-color: #6BAED6; color: #000000">62.4</td>
-<td class="gt_row gt_right gt_striped" headers="Average Exit Velocity" style="background-color: #72B1D8; color: #000000">83.9</td>
-<td class="gt_row gt_right gt_striped" headers="Batting Average" style="background-color: #FFF7F5; color: #000000">0.282</td>
-<td class="gt_row gt_right gt_striped" headers="On-Base Percentage" style="background-color: #F08C7B; color: #000000">0.382</td>
-<td class="gt_row gt_right gt_striped" headers="Slugging Percentage" style="background-color: #6BAED6; color: #000000">0.349</td>
-<td class="gt_row gt_right gt_striped" headers="Home Runs" style="background-color: #83B9DC; color: #000000">3</td>
-<td class="gt_row gt_right gt_striped" headers="OPS" style="background-color: #AFD0E8; color: #000000">0.731</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Player">Junior Caminero</td>
-<td class="gt_row gt_right" headers="Average Bat Speed" style="background-color: #CB181D; color: #FFFFFF">79.4</td>
-<td class="gt_row gt_right" headers="Average Exit Velocity" style="background-color: #E46655; color: #FFFFFF">92.7</td>
-<td class="gt_row gt_right" headers="Batting Average" style="background-color: #E3EEF7; color: #000000">0.276</td>
-<td class="gt_row gt_right" headers="On-Base Percentage" style="background-color: #EBF3F9; color: #000000">0.360</td>
-<td class="gt_row gt_right" headers="Slugging Percentage" style="background-color: #CB181D; color: #FFFFFF">0.524</td>
-<td class="gt_row gt_right" headers="Home Runs" style="background-color: #CB181D; color: #FFFFFF">42</td>
-<td class="gt_row gt_right" headers="OPS" style="background-color: #CB181D; color: #FFFFFF">0.885</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left gt_striped" headers="Player">Nick Kurtz</td>
-<td class="gt_row gt_right gt_striped" headers="Average Bat Speed" style="background-color: #D9483A; color: #FFFFFF">78.2</td>
-<td class="gt_row gt_right gt_striped" headers="Average Exit Velocity" style="background-color: #D84639; color: #FFFFFF">93.4</td>
-<td class="gt_row gt_right gt_striped" headers="Batting Average" style="background-color: #6BAED6; color: #000000">0.256</td>
-<td class="gt_row gt_right gt_striped" headers="On-Base Percentage" style="background-color: #CB181D; color: #FFFFFF">0.396</td>
-<td class="gt_row gt_right gt_striped" headers="Slugging Percentage" style="background-color: #F19180; color: #000000">0.483</td>
-<td class="gt_row gt_right gt_striped" headers="Home Runs" style="background-color: #FFFFFF; color: #000000">21</td>
-<td class="gt_row gt_right gt_striped" headers="OPS" style="background-color: #D1312A; color: #FFFFFF">0.879</td>
+<td class="gt_row gt_left" headers="Player">Nick Kurtz</td>
+<td class="gt_row gt_right" headers="Average Bat Speed">78.2</td>
+<td class="gt_row gt_right" headers="Average Exit Velocity">93.4</td>
+<td class="gt_row gt_right" headers="Batting Average">0.256</td>
+<td class="gt_row gt_right" headers="On-Base Percentage" style="font-weight: bold">0.396</td>
+<td class="gt_row gt_right" headers="Slugging Percentage">0.483</td>
+<td class="gt_row gt_right" headers="Home Runs">21</td>
+<td class="gt_row gt_right" headers="OPS">0.879</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Player">Oneil Cruz</td>
-<td class="gt_row gt_right" headers="Average Bat Speed" style="background-color: #DE5646; color: #FFFFFF">77.7</td>
-<td class="gt_row gt_right" headers="Average Exit Velocity" style="background-color: #CB181D; color: #FFFFFF">94.1</td>
-<td class="gt_row gt_right" headers="Batting Average" style="background-color: #F9FCFD; color: #000000">0.280</td>
-<td class="gt_row gt_right" headers="On-Base Percentage" style="background-color: #FFE8E3; color: #000000">0.368</td>
-<td class="gt_row gt_right" headers="Slugging Percentage" style="background-color: #EF8A79; color: #000000">0.486</td>
-<td class="gt_row gt_right" headers="Home Runs" style="background-color: #F8FBFD; color: #000000">20</td>
-<td class="gt_row gt_right" headers="OPS" style="background-color: #E7715F; color: #FFFFFF">0.854</td>
+<td class="gt_row gt_right" headers="Average Bat Speed">77.7</td>
+<td class="gt_row gt_right" headers="Average Exit Velocity" style="font-weight: bold">94.1</td>
+<td class="gt_row gt_right" headers="Batting Average">0.280</td>
+<td class="gt_row gt_right" headers="On-Base Percentage">0.368</td>
+<td class="gt_row gt_right" headers="Slugging Percentage">0.486</td>
+<td class="gt_row gt_right" headers="Home Runs">20</td>
+<td class="gt_row gt_right" headers="OPS">0.854</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Player">Chandler Simpson</td>
+<td class="gt_row gt_right" headers="Average Bat Speed">65.1</td>
+<td class="gt_row gt_right" headers="Average Exit Velocity">83.7</td>
+<td class="gt_row gt_right" headers="Batting Average" style="font-weight: bold">0.306</td>
+<td class="gt_row gt_right" headers="On-Base Percentage">0.333</td>
+<td class="gt_row gt_right" headers="Slugging Percentage">0.356</td>
+<td class="gt_row gt_right" headers="Home Runs">0</td>
+<td class="gt_row gt_right" headers="OPS">0.689</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Player" style="background-color: #ADD8E6">Steven Kwan</td>
+<td class="gt_row gt_right" headers="Average Bat Speed" style="background-color: #ADD8E6">62.4</td>
+<td class="gt_row gt_right" headers="Average Exit Velocity" style="background-color: #ADD8E6">83.9</td>
+<td class="gt_row gt_right" headers="Batting Average" style="background-color: #ADD8E6">0.282</td>
+<td class="gt_row gt_right" headers="On-Base Percentage" style="background-color: #ADD8E6">0.382</td>
+<td class="gt_row gt_right" headers="Slugging Percentage" style="background-color: #ADD8E6">0.349</td>
+<td class="gt_row gt_right" headers="Home Runs" style="background-color: #ADD8E6">3</td>
+<td class="gt_row gt_right" headers="OPS" style="background-color: #ADD8E6">0.731</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
