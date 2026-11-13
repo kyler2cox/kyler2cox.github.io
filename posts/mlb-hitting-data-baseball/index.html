@@ -453,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The most prominent name on this list is Tampa Bay Rays third baseman Junior Caminero. An All-Star in 2026, Caminero led all MLB hitters with an average bat speed of 79.4 mph. It resulted in a lot of hard contact, too. He averaged a 92.7 mph exit velocity.</p>
 <p>Athletics first baseman Nick Kurtz and Pittsburgh Pirates center fielder Oneil Cruz are also represented on the graph. Both players were among the top five in swing speed, and both ranked in the top 10 of MLB in exit velocity.</p>
 <p>On the other side of the chart, Cleveland Guardians outfielder Steven Kwan and Rays outfielder Chandler Simpson represent the inverse of the first three players. Kwan had the slowest bat speed in baseball (62.4), which has resulted in a bottom-five exit velocity of 83.9 mph. Simpson also fell on the slower end of swing speed (65.1) and had a bottom-three exit velocity in the sport (83.7).</p>
-<p>But do these numbers really mean anything? Production is what really matters, and if swinging harder produces harder contact, then hard contact must produce better results, right? By looking at a beeswarm plot, we can see that there is a clear relation between OPS and harder exit velocity.</p>
+<p>But do these numbers really mean anything? Production is what really matters, and if swinging harder produces harder contact, then hard contact must produce better results, right? By looking at a beeswarm plot, we can see that there is a clear relation between higher OPS and higher exit velocity.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -517,9 +517,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The biggest thing this chart displays is the importance of measurable production, which is shown in the value of OPS. Among the three players with the highest exit velocities, Caminero, Kurtz and Cruz posted an OPS significantly above the league average of .719 in 2026. We can see these numbers using data from Baseball Reference.</p>
 <p>Caminero’s high swing speed correlated to an .885 OPS, which was the highest among all five hitters. Kurtz posted an OPS just below that with .879, while Cruz was the lowest of the three with a number of .854.</p>
-<p>The beeswarm plot shows that the majority of players with an average exit velocity over 91 mph sit around an .800 OPS. The middle plot displays players between 88 and 91 mph, with an average OPS just under .800, while most players under 88 mph fall in the .600-.750 OPS range.</p>
+<p>The beeswarm plot shows that the majority of players with an average exit velocity over 91 mph sit around an .800 OPS. The middle plot displays players between 88 and 91 mph, with an average OPS under .800, while most players under 88 mph fall in the .600-.750 OPS range.</p>
 <p>By focusing on Kwan and Simpson, the plot clearly shows that their soft contact did not result in higher offensive production, at least from an OPS standpoint. Kwan posted a .731 OPS, just above league average, while Simpson’s .689 OPS was the worst of the five players represented on the chart.</p>
-<p>While OPS is the top metric for determining player production, we still need to add other numbers into the equation to tell the whole story. Let’s do that by switching to a gt table chart.</p>
+<p>While OPS is the top metric for determining offensive production, we still need to add other numbers into the equation to tell the whole story. Let’s do that by switching to a gt table chart.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -551,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"So Swinging Hard Does Matter..."</span>,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Players who swing harder produce more home runs and a higher OPS, and it's not close:"</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Players who swing harder produce more home runs and a higher OPS, and it's not close."</span></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
@@ -606,23 +606,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="snoufvkgbn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#snoufvkgbn table {
+<div id="ktsbvnorrl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ktsbvnorrl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#snoufvkgbn thead, #snoufvkgbn tbody, #snoufvkgbn tfoot, #snoufvkgbn tr, #snoufvkgbn td, #snoufvkgbn th {
+#ktsbvnorrl thead, #ktsbvnorrl tbody, #ktsbvnorrl tfoot, #ktsbvnorrl tr, #ktsbvnorrl td, #ktsbvnorrl th {
   border-style: none;
 }
 
-#snoufvkgbn p {
+#ktsbvnorrl p {
   margin: 0;
   padding: 0;
 }
 
-#snoufvkgbn .gt_table {
+#ktsbvnorrl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -648,12 +648,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_caption {
+#ktsbvnorrl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#snoufvkgbn .gt_title {
+#ktsbvnorrl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -665,7 +665,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#snoufvkgbn .gt_subtitle {
+#ktsbvnorrl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -677,7 +677,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#snoufvkgbn .gt_heading {
+#ktsbvnorrl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -689,13 +689,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_bottom_border {
+#ktsbvnorrl .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_col_headings {
+#ktsbvnorrl .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -710,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_col_heading {
+#ktsbvnorrl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -730,7 +730,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#snoufvkgbn .gt_column_spanner_outer {
+#ktsbvnorrl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -742,15 +742,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#snoufvkgbn .gt_column_spanner_outer:first-child {
+#ktsbvnorrl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#snoufvkgbn .gt_column_spanner_outer:last-child {
+#ktsbvnorrl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#snoufvkgbn .gt_column_spanner {
+#ktsbvnorrl .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -762,11 +762,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#snoufvkgbn .gt_spanner_row {
+#ktsbvnorrl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#snoufvkgbn .gt_group_heading {
+#ktsbvnorrl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -792,7 +792,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#snoufvkgbn .gt_empty_group_heading {
+#ktsbvnorrl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -807,15 +807,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#snoufvkgbn .gt_from_md > :first-child {
+#ktsbvnorrl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#snoufvkgbn .gt_from_md > :last-child {
+#ktsbvnorrl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#snoufvkgbn .gt_row {
+#ktsbvnorrl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -834,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#snoufvkgbn .gt_stub {
+#ktsbvnorrl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -847,7 +847,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#snoufvkgbn .gt_stub_row_group {
+#ktsbvnorrl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -861,15 +861,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#snoufvkgbn .gt_row_group_first td {
+#ktsbvnorrl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#snoufvkgbn .gt_row_group_first th {
+#ktsbvnorrl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#snoufvkgbn .gt_summary_row {
+#ktsbvnorrl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -879,16 +879,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#snoufvkgbn .gt_first_summary_row {
+#ktsbvnorrl .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_first_summary_row.thick {
+#ktsbvnorrl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#snoufvkgbn .gt_last_summary_row {
+#ktsbvnorrl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_grand_summary_row {
+#ktsbvnorrl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -908,7 +908,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#snoufvkgbn .gt_first_grand_summary_row {
+#ktsbvnorrl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -918,7 +918,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_last_grand_summary_row_top {
+#ktsbvnorrl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -928,11 +928,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_striped {
+#ktsbvnorrl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#snoufvkgbn .gt_table_body {
+#ktsbvnorrl .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -941,7 +941,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_footnotes {
+#ktsbvnorrl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -955,7 +955,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_footnote {
+#ktsbvnorrl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -964,7 +964,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#snoufvkgbn .gt_sourcenotes {
+#ktsbvnorrl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -978,7 +978,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#snoufvkgbn .gt_sourcenote {
+#ktsbvnorrl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -986,72 +986,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#snoufvkgbn .gt_left {
+#ktsbvnorrl .gt_left {
   text-align: left;
 }
 
-#snoufvkgbn .gt_center {
+#ktsbvnorrl .gt_center {
   text-align: center;
 }
 
-#snoufvkgbn .gt_right {
+#ktsbvnorrl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#snoufvkgbn .gt_font_normal {
+#ktsbvnorrl .gt_font_normal {
   font-weight: normal;
 }
 
-#snoufvkgbn .gt_font_bold {
+#ktsbvnorrl .gt_font_bold {
   font-weight: bold;
 }
 
-#snoufvkgbn .gt_font_italic {
+#ktsbvnorrl .gt_font_italic {
   font-style: italic;
 }
 
-#snoufvkgbn .gt_super {
+#ktsbvnorrl .gt_super {
   font-size: 65%;
 }
 
-#snoufvkgbn .gt_footnote_marks {
+#ktsbvnorrl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#snoufvkgbn .gt_asterisk {
+#ktsbvnorrl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#snoufvkgbn .gt_indent_1 {
+#ktsbvnorrl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#snoufvkgbn .gt_indent_2 {
+#ktsbvnorrl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#snoufvkgbn .gt_indent_3 {
+#ktsbvnorrl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#snoufvkgbn .gt_indent_4 {
+#ktsbvnorrl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#snoufvkgbn .gt_indent_5 {
+#ktsbvnorrl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#snoufvkgbn .katex-display {
+#ktsbvnorrl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#snoufvkgbn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ktsbvnorrl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1062,7 +1062,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td colspan="8" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">So Swinging Hard Does Matter...</td>
 </tr>
 <tr class="gt_heading even">
-<td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">Players who swing harder produce more home runs and a higher OPS, and it's not close:</td>
+<td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">Players who swing harder produce more home runs and a higher OPS, and it's not close.</td>
 </tr>
 <tr class="gt_col_headings header">
 <th id="Player" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 14; font-weight: bold" scope="col">Player</th>
@@ -1138,7 +1138,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This chart reinforces what we already knew: that hitting the ball harder generates more offensive production. This can be seen by adding batting average, on-base percentage, slugging percentage and home runs to the equation.</p>
-<p>Caminero is the best hitter on the list. His swing speed leads the group, as do his .524 slugging percentage and 42 home runs. Kurtz and Cruz are not far behind, with their high swing speeds translating into the top-two exit velocities. All three hitters have an exit velocity over 92 mph, and all three have at least 20 home runs and at least an .850 OPS.</p>
+<p>Caminero is the best hitter on the list. His swing speed leads the group, as do his .524 slugging percentage and 42 home runs. Kurtz and Cruz are not far behind, with their high swing speeds translating into the top-two exit velocities. All three hitters have an exit velocity over 92 mph, and all three have at least 20 home runs and an .850 OPS.</p>
 <p>Kwan and Simpson fall to the bottom of the list in home runs and slugging percentage. There is a caveat, though, in that Kwan has the second-highest on-base percentage of the group (.382) and the second-highest batting average (.282). Simpson leads the group in batting average, hitting .306 in 2026.</p>
 <p>This suggests more complete at-bats, but it does not make up for their lost production in OPS, which ranges over .100 points below the top three hitters. The difference in Caminero’s 42 home runs, to Simpson’s zero, is more significant than just the .030 batting average difference between the two hitters. The same can be said about Kwan’s on-base percentage, which is .014 points higher than Cruz’s (.368), even though Cruz has 17 more home runs than Kwan.</p>
 <p>Hitting the ball harder does make you a better, more productive hitter. The numbers point toward this. And as long as baseball continues to prioritize underlying metrics, MLB’s best players will continue to be those who swing hard, hit hard and produce more.</p>
